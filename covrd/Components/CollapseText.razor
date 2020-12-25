@@ -1,0 +1,49 @@
+﻿
+
+
+<span @onclick="@ToggleCollapse">
+    @if (!Collapsed)
+    {
+        @Text
+    }
+    else
+    {
+        @Text.Substring(0, 80) 
+    }
+</span>
+
+
+        @code {
+            private bool Collapsed = true;
+
+            [Parameter]
+            public string Text { get; set; }
+            [Parameter]
+            public string WordQuery { get; set; }
+
+
+            private void ToggleCollapse()
+            {
+                Collapsed = !Collapsed;
+            }
+
+            private string Hightlight()
+            {
+                if (Text == String.Empty || WordQuery == String.Empty)
+                    return Text;
+
+                return Text;
+
+                /*
+                var words = WordQuery.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                return words.Select(word => "\\b" + word.Trim() + "\\b")
+                                .Aggregate(Text, (current, pattern) =>
+                                           Regex.Replace(current,
+                                           pattern,
+                                             string.Format("<span class=\"highlighted\">{1}</span>",
+                                             "yellow",
+                                             "$0"),
+                                             RegexOptions.IgnoreCase)); */
+            }
+        }

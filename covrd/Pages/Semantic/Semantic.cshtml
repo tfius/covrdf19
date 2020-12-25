@@ -1,0 +1,153 @@
+﻿@page
+@using covrd.Extensions
+@model covrd.SemanticModel
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+@if (Model.Results == null)
+{
+    <small>Search with Automatic Features Detection results and Latent Dirichlet Allocation Estimator results</small>
+}
+
+<small>use prefix []or [-]not [+]and [=]has feature [!]exclude feature ie. 'interleukin-6 -animal +phenotypic =protein !tumor'</small>
+
+<form asp-page="./Search" method="get">
+    <div class="form-actions no-color">
+        <p>
+            <input type="text" name="CurrentFilter" value="@Model.CurrentFilter" style="min-width:90%;overflow:auto;" />
+            <input type="submit" value="Search" class="btn btn-primary" />
+        </p>
+        @if (Model.Results != null)
+        {
+            <div class="small">Displaying @Model.Results.Refs.Count papers, @Model.Results.MaxPages pages, start at @Model.Results.StartAt, @Model.Results.AllOccurances Hits </div>
+            <small>
+                @(await Html.RenderComponentAsync<PagerComponent>(RenderMode.ServerPrerendered, 
+                   new { currentFilter = @Model.CurrentFilter, pageNumber = Model.PageIndex, totalRecords = Model.Results.MaxPages, pageSize = 1, linkUrl = "/Semantic/Semantic" }))
+            </small>
+        }
+    </div>
+</form>
+
+<div>
+    @if (Model.Results != null)
+    {
+        @if (Model.Results.Refs.Count == 0)
+        {
+            <div>No results</div>
+        }
+        else
+        {
+<div class="container">
+    @if (Model.Results.SearchResultsTokenFeatures != null)
+    {
+        <span class="text-dark">Result Topics:</span>
+        @for (int i = 0; i < Model.Results.SearchResultsTokenFeatures.Count() && i < 20; i++)
+        {
+            var tokenName = Model.Results.SearchResultsTokenFeatures[i].Token;
+            var featureVal = Model.Results.SearchResultsTokenFeatures[i].Feature;
+            var addToQuery = Model.CurrentFilter + " =" + tokenName;
+            <a class="text-black-50" asp-page="/Semantic/Semantic" asp-route-currentFilter="@addToQuery">@tokenName</a>
+        }
+    }
+
+    @foreach (var searchRef in Model.Results.Refs)
+    {
+        <div class="document row">
+            <div class="documentView col-sm">
+                <br />
+                <a asp-page="/Papers/Details" asp-route-id="@searchRef.PaperDbId">
+                    <h5 class="display-1" style="font-size:1.3rem">@searchRef.PaperCountId. @Html.Raw(@searchRef.PaperTitle.HighlightKeyWords(Model.WordQuery, "yellow", false)) </h5>
+                </a>
+                <div class="documentTokens small text-black-50 col-sm-9">
+                    <a href="https://www.ncbi.nlm.nih.gov/pubmed/?term=@searchRef.PaperTitle" target="_blank">PubMed</a>
+                    <a href="https://www.medrxiv.org/search/@searchRef.PaperTitle" target="_blank">medRxiv</a>
+                    <a href="https://www.biorxiv.org/search/@searchRef.PaperTitle" target="_blank">bioRxiv</a>
+
+                    @*@foreach (var token in searchRef.FeatureTokenNames)
+        {
+            var addToQuery = Model.CurrentFilter + " =" + token;
+            <a class="text-black-50" asp-page="/Semantic/Semantic" asp-route-currentFilter="@addToQuery">@token</a>
+        }*@
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="documentView col-sm" id="COLCOLAP_@searchRef.PaperCountId">
+                <div class="documentTokens small text-black-50 col">
+                    <span class="text-dark">Weight: @searchRef.Score Paper Topics:</span>
+                    @foreach (var token in searchRef.FeatureTokenNames)
+                    {
+                        var addToQuery = Model.CurrentFilter + " =" + token;
+                        <a class="text-black-50" asp-page="/Semantic/Semantic" asp-route-currentFilter="@addToQuery">@token</a>
+                    }
+                    @*@(await Html.RenderComponentAsync<CollapseFeatureNames>(RenderMode.ServerPrerendered,
+                        new { Tokens = @searchRef.FeatureTokenNames, Filter = Model.CurrentFilter }))*@
+
+                </div>
+            </div>
+        </div>
+        if (searchRef.Samples.Count > 0)
+        {
+            <div class="text-right small display-4" style="margin-right:10%">@searchRef.Samples.Count section matches</div>
+        }
+
+        <div class="container">
+            @{ var prevSection = ""; }
+
+            @foreach (var item in searchRef.Samples)
+            {
+                <div class="document row">
+                    <div class="documentView col-sm-9" id="text_data_">
+                        @if (prevSection != item.Data.Section)
+                        {
+                            <h1 class="display-4" style="font-size:1.1rem;margin-top:0.8rem">@item.Data.Section</h1>
+                            { prevSection = item.Data.Section; }
+                        }
+
+                        @Html.Raw(item.Data.Text.HighlightKeyWords(Model.WordQuery, "yellow", false))
+
+                        @*@(await Html.RenderComponentAsync<CollapseText>(RenderMode.ServerPrerendered, new { Text = @item.Data.Text, WordQuery = Model.WordQuery }))*@
+
+                    </div>
+                    <div class="documentTokens col-sm-3 small">
+                        @if(item.Tokens!=null)
+                        {
+                            @for (int i = 0; i < item.Tokens.Count() && i < 20; i++)
+                            {
+                                var addToQuery = Model.CurrentFilter + " " + item.Tokens[i];
+                                <a class="text-black-50" asp-page="/Semantic/Semantic" asp-route-currentFilter="@addToQuery">@item.Tokens[i]</a>
+                            }
+                        }
+
+                        @if (item.TokensFeatures != null)
+                        {
+                            @for (int i = 0; i < item.TokensFeatures.Count() && i < 20; i++)
+                            {
+                                var tokenName = item.TokensFeatures[i].Token;
+                                var featureVal = item.TokensFeatures[i].Feature;
+                                var addToQuery = Model.CurrentFilter + " +" + tokenName;
+                                <a class="text-black-50" asp-page="/Semantic/Semantic" asp-route-currentFilter="@addToQuery">@tokenName</a>
+                                @*<span class="text-black-50 small"><small>@featureVal.ToString("0.000")</small></span>*@
+                            }
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+            <br/>
+            @(await Html.RenderComponentAsync<PagerComponent>(RenderMode.ServerPrerendered, new { currentFilter = @Model.CurrentFilter, pageNumber = Model.PageIndex, totalRecords = Model.Results.MaxPages, pageSize = 1, linkUrl = "/Semantic/Semantic" }))
+        }
+    }
+    else
+    {
+        <div>No results</div>
+    }
+</div>
+
+
+
+<script src="~/js/ShowHide.js"></script>

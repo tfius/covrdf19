@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>covrd</name>
+    </assembly>
+    <members>
+        <member name="M:covrd.Controller.PapersController.GetPaperIdx(System.Int32)">
+            <summary>
+            Get paper by paper index
+            </summary>
+            <param name="idx"></param>
+            <returns></returns>
+        </member>
+        <member name="M:covrd.Controller.PapersController.GetPapersCount">
+            <summary>
+            Get num of papers in db
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:covrd.Controller.PapersController.GetPaper(System.String)">
+            <summary>
+            Get paper by paperId
+            </summary>
+            <param name="paperId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:covrd.Controller.PapersController.AnalyseText(covrd.Model.TextData)">
+            <summary>
+            Run Latent Diricleht Allocation Estimator on dataText, this will run prediciton engine trained on corpus of CORD-19 documents
+            and return detected topics
+            </summary>
+            <param name="dataText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:covrd.Extensions.HTMLExtensions.HighlightKeyWords(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Wraps matched strings in HTML span elements styled with a background-color
+            </summary>
+            <param name="text"></param>
+            <param name="keywords">Comma-separated list of strings to be highlighted</param>
+            <param name="cssClass">The Css color to apply</param>
+            <param name="fullMatch">false for returning all matches, true for whole word matches only</param>
+            <returns>string</returns>
+        </member>
+    </members>
+</doc>

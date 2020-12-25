@@ -1,0 +1,180 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "";
+}
+
+    <div class="text-left small">
+        @*<h1 class="display-4">Welcome</h1>*@
+        <h5 class="display-4" style="font-size:1.1rem">Welcome To SemanticCORD-19 Search</h5>
+        <p>
+            Search over documents from <a href="https://pages.semanticscholar.org/coronavirus-research">COVID-19 Open Research Dataset</a> dataset.<br />
+            This project was started to work on semantic analysis of papers and contribute to ongoing efforts against COVID-19.<br />
+            Check <a href="/swagger">Swagger API</a> how access to documents and perform LDA feature extraction analysis of included texts.<br />
+        </p>
+        <p>
+            <h5 class="display-4" style="font-size:1.1rem">Who is this site for</h5>
+            Use this site to quickly find related documents and extracted features.
+            It was built because sometimes it's hard to use commercial search services when looking in domain specific knowledge.
+            When <a href="https://allenai.org/">Allen Institute for AI</a> published CORD-19 Open Research dataset I decided i will do my part and created this site.
+            In order to view complete document in PDF format your will have to find them on corresponding archives.
+        </p>
+
+        <p>
+            <h5 class="display-4" style="font-size:1.1rem">Some sample querys and how to get excerpts from literature</h5>
+            <ul>
+                <li>
+                    <a asp-page="/Semantic/Semantic" asp-route-currentFilter="+incubation +period +human range">Range of incubation periods for the disease in humans</a>
+                    <a asp-page="/Semantic/Semantic" asp-route-currentFilter="+age +contagious contagion recovery +health">(and how this varies across age and health status) </a>
+                    <a asp-page="/Semantic/Semantic" asp-route-currentFilter="+age +contag +individual +recovery +health"> and how long individuals are contagious, even after recovery.</a>
+                </li>
+                <li>
+                    <a asp-page="/Semantic/Semantic" asp-route-currentFilter="+asymptomatic +shed +transmission">Prevalence of asymptomatic shedding and transmission</a>
+                    <a asp-page="/Semantic/Semantic" asp-route-currentFilter="+prevalence +asymptomatic +shedding +transmission +children">(e.g., particularly children).</a>
+                </li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="+transmission +contagion season">Seasonality of transmission.</a></li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="+distribution +surface +adhesion hydrophilic phobic decontamination viral">Physical science of the coronavirus (e.g., charge distribution, adhesion to hydrophilic/phobic surfaces, environmental survival to inform decontamination efforts for affected areas and provide information about viral shedding).</a></li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="+nasal +sputum +urine fecal +blood">Persistence and stability on a multitude of substrates and sources (e.g., nasal discharge, sputum, urine, fecal matter, blood).</a></li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="+material +surface +virus copper stainless plastic">Persistence of virus on surfaces of different materials (e,g., copper, stainless steel, plastic).</a></li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="+history +shed +virus +infect person human patient">Natural history of the virus and shedding of it from an infected person</a></li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="+diagnos +product +clinic +process">Implementation of diagnostics and products to improve clinical processes</a></li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="=animal =infection =disease +transmission model">Disease models, including animal models for infection, disease and transmission</a></li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="+phenotypic +adapt +virus +monitor tool study change">Tools and studies to monitor phenotypic change and potential adaptation of the virus</a></li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="Immune immunity +response">Immune response and immunity</a></li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="+move +strateg +transmission +care +community health">Effectiveness of movement control strategies to prevent secondary transmission in health care and community settings</a></li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="+person +equipment +use +risk +community health">Effectiveness of personal protective equipment (PPE) and its usefulness to reduce risk of transmission in health care and community settings</a></li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="+transmission +environment role">Role of the environment in transmission</a></li>
+            </ul>
+        </p>
+        <p>
+            <h5 class="display-4" style="font-size:1.1rem">Search for specific words</h5>
+            <ul>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="+favipiravir +drug">favipiravir</a></li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="+avigan +drug">avigan</a></li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="+chloroquine +drug">chloroquine phosphate</a></li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="+Lopinavir +drug">Lopinavir / ritonavir</a></li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="+Kaletra +drug">Kaletra Aluvia</a></li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="+Sarilumab Kevzara +drug">Sarilumab Kevzara</a></li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="+tocilizumab +drug">tocilizumab</a></li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="azithromycin +hydroxychloroquine">hydroxychloroquine and azithromycin</a></li>
+            </ul>
+        </p>
+        <p>
+            <h5 class="display-4" style="font-size:1.1rem">Get results based on paper features and topics</h5>
+            <ul>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="=drug =virus">drug virus </a></li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="=human =protein">proteins and human</a></li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="=chronic">chronic</a></li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="+=gene">Gene</a></li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="=gene =nucleus =p53">p53 nucleus gene</a></li>
+                <li><a asp-page="/Semantic/Semantic" asp-route-currentFilter="=coronavirus +interleukin-6 +necrosis">interleukin-6 necrosis coronavirus</a></li>
+            </ul>
+        </p>
+
+        <p>
+            <h5 class="display-4" style="font-size:1.1rem">Mind this project is not yet feature complete.</h5>
+            <ul>
+                <li>Linking of documents by citation</li>
+                <li>No figures nor tables included</li>
+                <li>No Data visualization</li>
+                <li>Search query options are not final</li>
+                <li>no results scoring</li>
+                <li>query order matters, ie. query '-animal +immune' will remove all papers with 'animal' before 'immune' search</li>
+            </ul>
+        </p>
+        <p>
+            <h5 class="display-4" style="font-size:1.1rem">Other sources for reference (not included here) </h5>
+            <ul>
+                <li>
+                    <a href="https: //www.cabi.org/news-article/cabi-provides-free-access-to-content-on-global-health-platform-to-help-fight-coronavirus-outbreak/">CABI Cambridge University Press</a>
+                </li>
+                <li>
+                    <a href="https://clarivate.com/coronavirus-resources/">Clarivate Analytics</a>
+                </li>
+                <li>
+                    <a href="https://www.elsevier.com/connect/coronavirus-information-center">Elsevier</a>
+                </li>
+
+                <div class="text-dark">ScienceDirect is free and available under tag “coronavirus”</div>
+                <li>
+                    <a href="https://www.emeraldgrouppublishing.com/promo/coronavirus.htm">Emerald</a>
+                </li>
+                <li>
+                    <a href="https://ioppublishing.org/news/coronavirus-covid-19-faqs/">IOPscience extra</a>
+                </li>
+                <li>
+                    <a href="http://tools.ovid.com/coronavirus/">OVID</a>
+                </li>
+                <li>
+                    <a href="https://academic.oup.com/journals/pages/coronavirus">Oxford Academic</a>
+                </li>
+                <li>
+                    <a href="https://www.proquest.com/blog/pqblog/2020/Coronavirus-Impacted-Libraries-Get-Unlimited-Access-to-Ebook-Central.html">ProQuest</a>
+                </li>
+                <li>
+                    <a href="https://uk.sagepub.com/en-gb/eur/press/access-coronavirus-covid-19-articles-from-sage-publishing">SAGE Publishing</a>
+                </li>
+                <li>
+                    <a href="https://www.sciencemag.org/coronavirus-research-commentary-and-news?IntCmp=coronavirussiderail-128">Science Journals</a>
+                </li>
+                <li>
+                    <a href="https://www.springernature.com/gp/researchers/campaigns/coronavirus">SpringerNature</a>
+                </li>
+                <li>
+                    <a href="https://newsroom.taylorandfrancisgroup.com/coronavirus-reading-list/">Taylor & Francis</a>
+                </li>
+                <li><a href="https://novel-coronavirus.onlinelibrary.wiley.com/">Wiley</a></li>
+            </ul>
+        <p>
+            Genome
+            <ul>
+                <li> <a href="https://www.ncbi.nlm.nih.gov/nuccore/MN908947.3">Severe acute respiratory syndrome coronavirus 2 isolate Wuhan-Hu-1, complete genom</a></li>
+                <li> <a href="https://www.ncbi.nlm.nih.gov/blast/treeview/treeView.cgi?request=page&blastRID=7THYPAUU014&queryID=gb|MN908947.3|&entrezLim=&ex=&exl=&exh=&ns=100">BLAST Tree View</a></li>
+                <li> <a href="https://www.ncbi.nlm.nih.gov/projects/msaviewer/?rid=7THYPAUU014&coloring=">MSA viewer</a></li>
+                <li> <a href="https://www.ncbi.nlm.nih.gov/nuccore/NC_045512.2?report=graph&rid=7TJ50H0R014[NC_045512.2]&tracks=[key:sequence_track,name:Sequence,display_name:Sequence,id:STD1,category:Sequence,annots:Sequence,ShowLabel:true][key:gene_model_track,CDSProductFeats:false][key:alignment_track,name:other%20alignments,annots:NG%20Alignments|Refseq%20Alignments|Gnomon%20Alignments|Unnamed,shown:false]&v=0:31398&appname=ncbiblast&link_loc=fromSubj">Graphics</a></li>
+                <li> <a href="https://www.ncbi.nlm.nih.gov/nuccore/NC_045512.2?report=fasta">FASTA</a></li>
+            </ul>
+        </p>
+        <p>
+            <ul>
+                <li>
+                    <a href="https://www.addgene.org/collections/covid-19-resources/?utm_content=123147298&utm_medium=social&utm_source=twitter&hss_channel=tw-82411462">addgene Plasmids &Aacute; Resources</a>
+                </li>
+            </ul>
+        </p>
+        @*<li>ACE-2
+           <ul>
+               <li><a href="https://www.ncbi.nlm.nih.gov/gene/59272">ACE2 angiotensin I converting enzyme 2</a></li>
+           </ul>
+        </li>*@
+
+
+        <p>
+            <h5 class="display-4" style="font-size:1.1rem">How this was project made</h5>
+            <ul>
+                <li>All documents were combined</li>
+                <li>LDA prediction engine was trained</li>
+                <li>Topics and feature values were predicted for each document</li>
+                <li>Each paper contains topics extracted from its text.</li>
+                <li>App to search papers was written and API to access its values and use prediction engine</li>
+                <li>This project is a memory hog, runs on machine and eats approximately 5 to 8 GB of space</li>
+            </ul>
+        </p>
+
+        </p>
+    </div>
+    <div>
+    </div>
+
+    <div class="text-left small">
+        <p>
+            This site serves CORD-19 documents from <a href="https://pages.semanticscholar.org/coronavirus-research">CORD-19</a> enriched with extracted topics and features<br />
+            By using this site you agree to <a href="https://ai2-semanticscholar-cord-19.s3-us-west-2.amazonaws.com/2020-03-13/COVID.DATA.LIC.AGMT.pdf">Dataset License</a> <br />
+            Please see additional licensing information
+            <a href="https://www.ncbi.nlm.nih.gov/pmc/tools/openftlist/">PMC website</a>,
+            <a href="https://www.medrxiv.org/submit-a-manuscript">medRxiv</a> and
+            <a href="https://www.biorxiv.org/about-biorxiv">bioRxiv</a>
+
+        <p>COVID-19 Open Research Dataset (CORD-19, 2020). Version 2020-03-13. Retrieved from <a href="https://pages.semanticscholar.org/coronavirus-research">https://pages.semanticscholar.org/coronavirus-research</a>. Accessed 2020-03-14. doi:10.5281/zenodo.3715506</p>
+        </p>
+    </div>

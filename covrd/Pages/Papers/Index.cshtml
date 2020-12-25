@@ -1,0 +1,49 @@
+﻿@page
+@model covrd.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+@*<h1>Papers</h1>
+<p>
+    <a asp-page="Create">Create New</a>
+</p>*@
+ <small>Search by title</small>
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="Name" asp-route-currentFilter="@Model.CurrentFilter">
+                    Paper @Html.DisplayNameFor(model => model.Papers[0].Metadata.Title)
+                </a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Papers)
+        {
+            <tr>
+                <td >
+                    <a asp-page="./Details" asp-route-id="@item.PaperId">@Html.DisplayFor(modelItem => item.Metadata.Title)</a>
+                </td>
+                <td class="small">
+                    @*<a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |*@
+                    @*<a asp-page="./Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.PaperId)</a> |*@
+                    <a asp-page="./Delete" asp-route-id="@item.PaperId">X</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@(await Html.RenderComponentAsync<PagerComponent>(RenderMode.ServerPrerendered, new { pageNumber = Model.Papers.PageIndex, totalRecords = Model.TotalRecords, pageSize = Model.PageSize, linkUrl = Url.PageLink("Index") }))

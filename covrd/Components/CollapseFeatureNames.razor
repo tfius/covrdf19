@@ -1,0 +1,30 @@
+﻿
+    <div class="documentTokens small text-black-50 col" @onclick="@ToggleCollapse">
+        @if (!Collapsed)
+        {
+            @foreach (var token in Tokens)
+            {
+                var addToQuery = Filter + " =" + token;
+                <a class="text-black-50" asp-page="/Semantic/Semantic" asp-route-currentFilter="@addToQuery">@token</a>
+            }
+        }
+        else
+        {
+            <span>[view extracted features]</span>
+        }
+    </div>
+
+@code {
+    private bool Collapsed = true;
+
+    [Parameter]
+    public List<string> Tokens { get; set; }
+
+    [Parameter]
+    public string Filter { get; set; }
+
+    private void ToggleCollapse()
+            {
+                Collapsed = !Collapsed;
+            }
+}

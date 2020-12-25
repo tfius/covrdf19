@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Http.Extensions 
+
+    <ul class="pagination justify-content-center pagination-sm">
+        <li class="page-item">
+            <a href="@GetURL(1)" class="page-link">&laquo;</a>
+        </li>
+
+        <li class="page-item">
+            <a href="@GetURL(pageNumber-1)" class="page-link">&lt;</a>
+        </li>
+
+        @for (var i = 1; i <= totalPages; i++)
+        {
+            if((i<10 && totalPages>30) || (i>totalPages-10 && totalPages>30) || totalPages<=30 || pageNumber==i || pageNumber==i-2 || pageNumber==i+2)
+            {
+            <li class="page-item @(i == pageNumber ? "active" : "")">
+                <a href="@GetURL(i)" class="page-link">@i</a>
+            </li>
+            }
+        }
+
+        <li class="page-item">
+            <a href="@GetURL(pageNumber+1)" class="page-link">&gt;</a>
+        </li>
+
+        <li class="page-item">
+            <a href="@GetURL(totalPages)" class="page-link">&raquo;</a>
+        </li>
+    </ul>
+
+ @*@GetURL(1)*@
+
+@code {
+    [Parameter] public int pageNumber { get; set; }
+    [Parameter] public string currentFilter { get; set; }
+    [Parameter] public int totalRecords { get; set; }
+    [Parameter] public int pageSize { get; set; } = 20;
+    [Parameter] public string linkUrl { get; set; }
+    int totalPages => (int)Math.Ceiling((decimal)totalRecords / pageSize);
+
+    public string GetURL(int page)
+    {
+        string ef = "";
+        if(currentFilter==null) currentFilter = "";
+
+        ef = currentFilter
+             .Replace("+", "%2B")
+             .Replace("-", "-")
+             .Replace("!", "%21")
+             .Replace("=", "%3D")
+             .Replace(" ", "+");
+        var link = linkUrl+"?CurrentFilter="+ef+"&pageIndex=" +page;
+        return link;
+    }
+}
+
+

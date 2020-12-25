@@ -1,0 +1,289 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.json" />
+    <None Remove="Resources\Models\Coref\acronyms" />
+    <None Remove="Resources\Models\Coref\cmodel.nbin" />
+    <None Remove="Resources\Models\Coref\cmodel_nr.nbin" />
+    <None Remove="Resources\Models\Coref\defmodel.nbin" />
+    <None Remove="Resources\Models\Coref\defmodel_nr.nbin" />
+    <None Remove="Resources\Models\Coref\fmodel.nbin" />
+    <None Remove="Resources\Models\Coref\fmodel_nr.nbin" />
+    <None Remove="Resources\Models\Coref\gen.fem" />
+    <None Remove="Resources\Models\Coref\gen.mal" />
+    <None Remove="Resources\Models\Coref\gen.nbin" />
+    <None Remove="Resources\Models\Coref\imodel.nbin" />
+    <None Remove="Resources\Models\Coref\imodel_nr.nbin" />
+    <None Remove="Resources\Models\Coref\num.nbin" />
+    <None Remove="Resources\Models\Coref\plmodel.nbin" />
+    <None Remove="Resources\Models\Coref\plmodel_nr.nbin" />
+    <None Remove="Resources\Models\Coref\pmodel.nbin" />
+    <None Remove="Resources\Models\Coref\pmodel_nr.nbin" />
+    <None Remove="Resources\Models\Coref\pnmodel.nbin" />
+    <None Remove="Resources\Models\Coref\pnmodel_nr.nbin" />
+    <None Remove="Resources\Models\Coref\sim.nbin" />
+    <None Remove="Resources\Models\Coref\tmodel.nbin" />
+    <None Remove="Resources\Models\Coref\tmodel_nr.nbin" />
+    <None Remove="Resources\Models\EnglishChunk.nbin" />
+    <None Remove="Resources\Models\EnglishPOS.nbin" />
+    <None Remove="Resources\Models\EnglishSD.nbin" />
+    <None Remove="Resources\Models\EnglishTok.nbin" />
+    <None Remove="Resources\Models\NameFind\date.nbin" />
+    <None Remove="Resources\Models\NameFind\location.nbin" />
+    <None Remove="Resources\Models\NameFind\money.nbin" />
+    <None Remove="Resources\Models\NameFind\organization.nbin" />
+    <None Remove="Resources\Models\NameFind\percentage.nbin" />
+    <None Remove="Resources\Models\NameFind\person.nbin" />
+    <None Remove="Resources\Models\NameFind\time.nbin" />
+    <None Remove="Resources\Models\organization.nbin" />
+    <None Remove="Resources\Models\Parser\build.nbin" />
+    <None Remove="Resources\Models\Parser\check.nbin" />
+    <None Remove="Resources\Models\Parser\chunk.nbin" />
+    <None Remove="Resources\Models\Parser\date.nbin" />
+    <None Remove="Resources\Models\Parser\head_rules" />
+    <None Remove="Resources\Models\Parser\tag.nbin" />
+    <None Remove="Resources\Models\Parser\tagdict" />
+    <None Remove="Resources\WordNet\dict\adj.exc" />
+    <None Remove="Resources\WordNet\dict\adv.exc" />
+    <None Remove="Resources\WordNet\dict\cntlist" />
+    <None Remove="Resources\WordNet\dict\cntlist.rev" />
+    <None Remove="Resources\WordNet\dict\data.adj" />
+    <None Remove="Resources\WordNet\dict\data.adv" />
+    <None Remove="Resources\WordNet\dict\data.noun" />
+    <None Remove="Resources\WordNet\dict\data.verb" />
+    <None Remove="Resources\WordNet\dict\frames.vrb" />
+    <None Remove="Resources\WordNet\dict\index.adj" />
+    <None Remove="Resources\WordNet\dict\index.adv" />
+    <None Remove="Resources\WordNet\dict\index.noun" />
+    <None Remove="Resources\WordNet\dict\index.sense" />
+    <None Remove="Resources\WordNet\dict\index.verb" />
+    <None Remove="Resources\WordNet\dict\log.grind.2.1" />
+    <None Remove="Resources\WordNet\dict\noun.exc" />
+    <None Remove="Resources\WordNet\dict\sentidx.vrb" />
+    <None Remove="Resources\WordNet\dict\sents.vrb" />
+    <None Remove="Resources\WordNet\dict\verb.exc" />
+    <None Remove="Resources\WordNet\dict\verb.Framestext" />
+    <None Remove="schema.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Coref\acronyms">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Coref\cmodel.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Coref\cmodel_nr.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Coref\defmodel.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Coref\defmodel_nr.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Coref\fmodel.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Coref\fmodel_nr.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Coref\gen.fem">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Coref\gen.mal">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Coref\gen.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Coref\imodel.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Coref\imodel_nr.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Coref\num.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Coref\plmodel.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Coref\plmodel_nr.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Coref\pmodel.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Coref\pmodel_nr.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Coref\pnmodel.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Coref\pnmodel_nr.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Coref\sim.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Coref\tmodel.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Coref\tmodel_nr.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\EnglishChunk.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\EnglishPOS.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\EnglishSD.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\EnglishTok.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\NameFind\date.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\NameFind\location.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\NameFind\money.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\NameFind\organization.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\NameFind\percentage.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\NameFind\person.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\NameFind\time.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\organization.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Parser\build.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Parser\check.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Parser\chunk.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Parser\date.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Parser\head_rules">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Parser\tag.nbin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Models\Parser\tagdict">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\WordNet\dict\adj.exc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\WordNet\dict\adv.exc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\WordNet\dict\cntlist">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\WordNet\dict\cntlist.rev">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\WordNet\dict\data.adj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\WordNet\dict\data.adv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\WordNet\dict\data.noun">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\WordNet\dict\data.verb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\WordNet\dict\frames.vrb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\WordNet\dict\index.adj">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\WordNet\dict\index.adv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\WordNet\dict\index.noun">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\WordNet\dict\index.sense">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\WordNet\dict\index.verb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\WordNet\dict\log.grind.2.1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\WordNet\dict\noun.exc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\WordNet\dict\sentidx.vrb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\WordNet\dict\sents.vrb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\WordNet\dict\verb.exc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\WordNet\dict\verb.Framestext">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="schema.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="3.1.2" />
+    <PackageReference Include="Microsoft.ML" Version="1.5.0-preview2" />
+    <PackageReference Include="Microsoft.ML.CpuMath" Version="1.5.0-preview2" />
+    <PackageReference Include="Microsoft.ML.LightGBM" Version="1.5.0-preview2" />
+    <PackageReference Include="Semiodesk.Trinity" Version="1.0.3.30" />
+    <PackageReference Include="System.Runtime.Caching" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="View\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CovrdModel\covrdf.Model.csproj" />
+  </ItemGroup>
+
+</Project>

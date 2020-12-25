@@ -1,0 +1,92 @@
+{
+    "paper_id": "",
+    "metadata": {
+        "title": "string",
+        "authors": [ 
+            {
+                "first": "string",
+                "middle": [],
+                "last": "string",
+                "suffix": "string",
+                "affiliation": {
+                    "laboratory": "",
+                    "institution": "Renmin Hospital of Wuhan University",
+                    "location": {
+                        "postCode": "string",
+                        "settlement": "string",
+                        "country": "string"
+                    }
+				},
+                "email": "string"
+            }
+        ],
+        "abstract": [
+            {
+                "text": "string",
+                "cite_spans": [
+                    {
+                        "start": 151,
+                        "end": 154,
+                        "text": "[7]",
+                        "ref_id": "BIBREF3"
+                    }
+                ],
+                "ref_spans": [
+                    {
+                        "start": 151,
+                        "end": 154,
+                        "text": "[7]",
+                        "ref_id": "BIBREF3"
+                    }
+                ],
+                "section": "Abstract"
+            }
+        ],
+        "body_text": [
+            {
+                "text": "string",
+                "cite_spans": [],
+                "ref_spans": [],
+                "eq_spans": [],
+                "section": "Introduction"
+            }
+        ],
+        "bib_entries": {
+            "BIBREF0": {
+                "ref_id": "string",
+                "title": "string",
+                "authors": [ 
+							{
+								"first": "string",
+								"middle": [],
+								"last": "string",
+								"suffix": "string",
+							}
+						]
+                "year": 0,
+                "venue": "string",
+                "volume": "string",
+                "issn": "string",
+                "pages": "string",
+                "other_ids": {
+                    "DOI": [
+                        "string"
+                    ]
+                }
+            }
+        },
+        "ref_entries":{
+            "FIGREF0": {
+				"text": ". Most of the infected patients were women (45 [77.6%] of 58) in the second group but there were fewer female patients (14 [45.2%] of 31) in the first group (",
+				"latex": null,
+				"type": "figure"
+			}
+			"TABREF0": {
+				"text": "23 had a small amount of sputum production, but only a few people in the second group had this symptom (4 [6.9%] of 58). Other symptoms, such as cough, nausea, diarrhea, and chest tightness, were not significantly different between the two groups.For hematology, the first group had a larger proportion of patients with reduced counts but elevated SAA (18 [75%] of 24) in peripheral blood. Other data, such as CRP,",
+				"latex": null,
+				"type": "table"
+			}
+        },
+        "back_matter": []       
+    }
+}

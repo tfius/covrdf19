@@ -1,0 +1,46 @@
+﻿@page
+@using covrd.Extensions
+@model covrd.SearchModel
+
+@{
+    ViewData["Title"] = "Search";
+}
+<small>Use this search to find text occurances</small>
+<form asp-page="./Search" method="get">
+    <div class="form-actions no-color">
+        <p>
+            <input type="text" name="CurrentFilter" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" />
+        </p>
+    </div>
+</form>
+
+<div>
+    @if (Model.Results != null)
+    {
+        @if (Model.Results.Refs.Count == 0)
+        {
+            <div>No results</div>
+        }
+        else
+        {
+            <div>Found in @Model.Results.Refs.Count papers</div> 
+            <hr />
+            @foreach (var searchRef in Model.Results.Refs)
+            {
+                <div><small class="text-right"><a asp-page="/Papers/Details" asp-route-id="@searchRef.PaperDbId">@searchRef.PaperTitle</a> in @searchRef.Texts.Count paragraphs</small></div>
+                @foreach (var item in searchRef.Texts)
+                {
+                    <p class="text-left">
+                        @Html.Raw(item.HighlightKeyWords(Model.CurrentFilter, "yellow", true)) 
+                    </p>
+                }
+            }
+        }
+    }
+    else
+    {
+        <div>No results</div>
+    }
+</div>
+
